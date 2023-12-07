@@ -3,25 +3,302 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary-rgb: @apply text-rose-500;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.rdrMonth {
+  width: 100% !important;
+}
+
+.rdrCalendarWrapper {
+  font-size: 16px !important;
+  width: 100% !important;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  min-height: 100vh;
+  }
+
+/* utilites */
+
+.grid-flow {
+  display: grid;
+  align-content: flex-start;
+  gap: 1rem;
+}
+
+.grid-flow[data-spacing="large"]
+{
+  gap: 2rem
+}
+
+.flow > *+* {
+   margin-top: var(--flow-space, 0.5rem);
+ }
+
+.flow[data-spacing="large"]
+{
+  --flow-space: 1rem
+}
+
+.flow[data-spacing="small"]
+{
+  --flow-space: 0.35rem
+}
+
+.max-w-100vw{
+  max-width: 100vw;
+}
+
+.flow-padding-bottom > *:not(:last-child) {
+  @apply
+  border-b-[2px];
+  padding-bottom: 1rem
+}
+
+.flow-padding-top > *:not(:first-child) {
+  padding-top:  1rem
+}
+
+.container-full{
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/*components*/
+
+.vertical-center{
+  top: 50%;
+  transform: translateY(-50%)
+  }
+
+.multiple-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+}  
+
+/*general*/
+
+.nav-container {
+  @apply
+  text-sm 
+  font-semibold
+  bg-white shadow-sm border-b-[1px];
+  width: 100%;
+  max-width: 80rem;
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-container .logo{
+  cursor: pointer;
+}  
+
+@media(max-width:35rem)
+  {
+  .nav-container .logo {
+      display: hidden;
+    }  
+}
+
+.nav-container .search-container {
+ @apply 
+ border-[1px] 
+ rounded-full 
+ shadow-sm 
+ hover:shadow-sm 
+ transition;
+ cursor: pointer;
+ display: flex; 
+ justify-content: space-between;
+ align-items: center;
+ padding: 0.2rem 0
+}
+
+.nav-container .search-container > * {
+  @apply 
+  px-6;
+ }
+
+ .hamburger-menu {
+  @apply
+  py-2
+  px-2 
+  md:py-1 
+  md:px-2 
+  border-[1px] 
+  border-neutral-200 
+  rounded-full 
+  hover:shadow-sm 
+  transition;
+ }
+
+ .nav-menu{
+  @apply
+  rounded-xl
+  shadow-md
+  border-[1px] 
+  bg-white
+  text-sm;
+  position: absolute;
+  overflow: hidden;
+  top: 40px;
+  right: 0;
+  width: 10rem;
+  z-index: 999
+ }
+
+
+ .modal-backdrop {
+  @apply bg-neutral-800/70;
+  display: grid;
+  place-items: center;
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  overflow-y: auto;
+  padding: 1rem 0
+ }
+
+ .modal {
+  @apply 
+  border-0
+  rounded-lg
+  shadow-lg
+  bg-white;
+  max-width: 30rem;
+  width: 100%;
+ }
+
+ .modal-inputs{
+  @apply 
+  font-light
+  bg-white
+  border-2
+  rounded-md
+  outline-none
+  disabled:opacity-70
+  disabled:cursor-not-allowed;
+  width: 100%;
+ }
+
+ .categories-box{
+  @apply
+    flex 
+    flex-col 
+    justify-center 
+    items-center 
+    gap-2
+    p-3
+    border-b-2
+    hover:text-neutral-800
+    transition
+    cursor-pointer
+ }
+
+ .modal-categories {
+   display: grid;
+   gap: 0.7rem;
+   max-height: 50vh;
+   overflow-y: auto;
+ }
+
+ @media(min-width:35rem)
+  {
+    .modal-categories {
+      grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.counter-btn {
+  @apply
+  rounded-full
+  border-[1px]
+  border-neutral-400
+  text-neutral-600
+  hover:opacity-80
+  transition;
+  display: grid;
+  place-items: center;
+  padding: 0.5rem;
+}
+
+.modal-category-box {
+@apply
+rounded-xl
+border-2
+p-4
+flex
+gap-3
+hover:border-black
+transition
+cursor-pointer
+}
+
+.image-uploadbox{
+@apply
+border-neutral-300
+text-neutral-600
+hover:opacity-70
+transition
+border-dashed 
+border-2 
+p-20 
+gap-4;
+display: grid;
+place-items: center;
+}
+
+.empty-dialbox{
+  @apply
+  grid
+  gap-2
+  place-content-center;
+  height: 60vh;
+}
+
+.listing-card {
+@apply
+aspect-square 
+overflow-hidden 
+rounded-xl;
+}
+
+.listing-head-img{
+  @apply
+  w-full 
+  h-[60vh] 
+  overflow-hidden 
+  rounded-xl 
+  relative;
+}
+
+.listing-reservation-wrapper{
+  @apply
+  bg-white
+  rounded-xl
+  border-[1px]
+  border-neutral-200
+  overflow-hidden;
+}
+
+/* ------------------- */
+/* button     */
+/* ------------------- */
+
+ button[data-type = nav-button]
+{
+  @apply 
+  rounded-full 
+  shadow-sm 
+  hover:shadow-sm 
+  transition
+  py-3
+  px-4;
 }
