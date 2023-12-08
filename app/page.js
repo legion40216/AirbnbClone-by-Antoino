@@ -1,8 +1,9 @@
 import getCurrentUser from "./actions/getCurrentUser"
 import getListings from "./actions/getListings"
+import ClientOnly from "./components/ClientOnly"
 import EmptyState from "./components/EmptyState"
 import ListingCard from "./components/listings/ListingCard"
-
+export const dynamic = 'force-dynamic'
 export default async function Home({searchParams}) {
 
   const listings = await getListings(searchParams) 
@@ -10,17 +11,15 @@ export default async function Home({searchParams}) {
 
   if(!listings || listings.length === 0 )
   {
-  
     return (
-     
+      <ClientOnly>
       <EmptyState showReset />
-     
+      </ClientOnly>
     )
-    
   }
 
   return (
-
+    <ClientOnly>
     <main className="container-full">
       <div className="
       multiple-grid
@@ -37,5 +36,6 @@ export default async function Home({searchParams}) {
         }
       </div>
     </main>
+    </ClientOnly>
   )
 }

@@ -15,9 +15,7 @@ export default async function getListings(params) {
   
     let query = {}
 
-    if(userId) {
-      query.userId = userId
-    }
+  
 
     if(category) {
       query.category = category
