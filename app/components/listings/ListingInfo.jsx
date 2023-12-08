@@ -1,5 +1,4 @@
 'use client'
-import useCountries from '@/hooks/useCountries'
 import React from 'react'
 import Avatar from '../Avatar'
 import ListingCategory from './ListingCategory'
@@ -11,11 +10,7 @@ export default function ListingInfo({
     roomCount,
     guestCount,
     bathroomCount,
-    locationValue,
 }) {
-    const {getByValue} = useCountries()
-
-    const coordinates = getByValue(locationValue)?.latlng
 
   return (
     <div className='flow-padding-bottom flow-padding-top'>
