@@ -1,22 +1,13 @@
 import client from "@/libs/prismadb";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
-import  GithubProvider  from "next-auth/providers/github";
-import  GoogleProvider  from "next-auth/providers/google";
+
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 
 const authOptions = {
   adapter: PrismaAdapter(client),
   providers: [
-    GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-    }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
     CredentialsProvider({
       name: 'credentials',
       credentials: {
@@ -25,6 +16,7 @@ const authOptions = {
       },
 
       async authorize(credentials) {
+        console.log('Authorize function called with credentials:', credentials);
         if (!credentials?.email || !credentials?.password) {
           throw new Error('Invalid credentials');
         }
@@ -34,7 +26,7 @@ const authOptions = {
             email: credentials.email,
           },
         });
-
+        console.log('User found:', user);
         if (!user || !user?.hashedPassword) {
           throw new Error('Invalid credentials');
         }
@@ -43,7 +35,7 @@ const authOptions = {
           credentials.password,
           user.hashedPassword
         );
-
+        console.log('is corret password');
         if (!isCorrectPassword) {
           throw new Error('Invalid credentials');
         }
