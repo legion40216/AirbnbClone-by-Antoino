@@ -10,6 +10,7 @@ import RegisterModal from './components/Modals/RegisterModal'
 import LoginModal from './components/Modals/LoginModal'
 import RentModal from './components/Modals/RentModal'
 import SearchModal from './components/Modals/SearchModal'
+import ClientOnly from './components/ClientOnly'
 
 
 const nunito = Nunito({ subsets: ['latin'] })
@@ -24,12 +25,14 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={nunito.className}>
+      <ClientOnly>
       <Toaster/>
       <RegisterModal/>
       <RentModal/>
       <LoginModal/>
       <SearchModal/>
       <Navbar currentUser={currentUser}/>
+      </ClientOnly>
 
       {children}
 

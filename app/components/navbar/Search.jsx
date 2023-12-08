@@ -24,7 +24,6 @@ export default function Search() {
   },[getByValue,locationValue])
 
   const durationLabel = useMemo(() => {
-    console.log(startDate && endDate)
     if (startDate && endDate) {
       const start = new Date(startDate);
       const end = new Date(endDate);

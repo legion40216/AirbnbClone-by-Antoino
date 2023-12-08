@@ -1,9 +1,7 @@
 import prisma from '@/libs/prismadb';
 
-export default async function getListings({searchParams}) {
- 
+export default async function getListings(params) {
   try {
-  
     const {
       userId,
       locationValue,
@@ -13,7 +11,7 @@ export default async function getListings({searchParams}) {
       startDate,
       endDate,
       category
-    } = searchParams
+    } = params
   
     let query = {}
 
