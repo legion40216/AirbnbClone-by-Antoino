@@ -1,9 +1,9 @@
 "use client"
-import ListingHead from '@/app/components/listings/ListingHead'
-import ListingInfo from '@/app/components/listings/ListingInfo'
-import ListingReservation from '@/app/components/listings/ListingReservation'
 
+import ListingReservation from '@/app/components/listings/ListingReservation'
+import ListingInfo from '@/app/components/listings/ListingInfo'
 import { categories } from '@/app/components/navbar/Categories'
+
 import useModalStore from '@/hooks/useModalStore'
 import { toast } from "react-hot-toast";
 import { differenceInDays, eachDayOfInterval } from 'date-fns'
@@ -33,7 +33,7 @@ export default function ListingClient({
   const category = categories.find((item) => {
     return item.label === listing.category
   })
-
+ 
   const disabledDates = useMemo(() => {
     let dates = []
 
@@ -102,43 +102,31 @@ useEffect(() => {
   }, [dateRange, listing.price]);
 
   return (
-   
-      <div className='grid-flow '>
-        <ListingHead 
-        title={listing.title}
-        imageSrc={listing.imageSrc}
-        locationValue={listing.locationValue}
-        listingId={listing.id}
-        currentUser={currentUser}
-        />
-        <div className='
-        grid 
-        grid-cols-1 
-        md:grid-cols-2 
-        md:gap-10 '
-        >
-        <ListingInfo    
-        user={listing.user}
-        category={category}
-        description={listing.description}
-        roomCount={listing.roomCount}
-        guestCount={listing.guestCount}
-        bathroomCount={listing.bathroomCount}
-        locationValue={listing.locationValue}
-        />
-          <div>
-            <ListingReservation
-            price={listing.price}
-            totalPrice={totalPrice}
-            onChangeDate={(value) => setDateRange(value)}
-            dateRange={dateRange}
-            onSubmit={onCreateReservation}
-            disabled={isLoading}
-            disabledDates={disabledDates}
-            />
-          </div>
-        </div>
-      </div>
- 
+    <div className='
+    grid-flow
+    grid 
+    grid-cols-1 
+    md:grid-cols-2 
+    md:gap-10 '
+    >
+    <ListingInfo    
+    user={listing.user}
+    category={category}
+    description={listing.description}
+    roomCount={listing.roomCount}
+    guestCount={listing.guestCount}
+    bathroomCount={listing.bathroomCount}
+    locationValue={listing.locationValue}
+    />
+    <ListingReservation
+    price={listing.price}
+    totalPrice={totalPrice}
+    onChangeDate={(value) => setDateRange(value)}
+    dateRange={dateRange}
+    onSubmit={onCreateReservation}
+    disabled={isLoading}
+    disabledDates={disabledDates}
+    />
+    </div>
   )
 }

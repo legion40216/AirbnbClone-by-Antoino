@@ -2,7 +2,8 @@ import getCurrentUser from "./actions/getCurrentUser";
 import getListings from "./actions/getListings";
 import EmptyState from "./components/EmptyState";
 import ListingCard from "./components/listings/ListingCard";
-export const revalidate = 0
+
+export const dynamic = 'force-dynamic'; 
 export default async function Home({searchParams}) {
   
   const listings = await getListings(searchParams) 

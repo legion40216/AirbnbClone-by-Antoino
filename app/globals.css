@@ -77,16 +77,18 @@ body {
 
 .multiple-grid {
 display: grid;
-grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+grid-template-columns: repeat(auto-fill, minmax(190px, 1fr))
 }  
 
 /*general*/
 
 .nav-container {
   @apply
-  text-sm 
+  text-sm
   font-semibold
-  bg-white shadow-sm border-b-[1px];
+  bg-white shadow-sm border-b-[1px]
+  gap-2
+  ;
   width: 100%;
   max-width: 80rem;
   padding: 1rem;
@@ -118,12 +120,13 @@ grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
  display: flex; 
  justify-content: space-between;
  align-items: center;
- padding: 0.2rem 0
+ padding: 0.2rem 0.5rem;
 }
 
-.nav-container .search-container > * {
+.nav-container .search-container > *:not(:last-child) {
   @apply 
-  px-6;
+  px-2
+  md:px-5
  }
 
  .hamburger-menu {

@@ -1,4 +1,4 @@
-"use client"
+
 import useCountries from '@/hooks/useCountries'
 import React from 'react'
 import Heading from '../Heading'

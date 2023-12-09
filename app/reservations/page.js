@@ -5,6 +5,7 @@ import getReservations from '../actions/getReservation'
 
 import EmptyState from '../components/EmptyState'
 import ReservationClient from './ReservationClient'
+
 export const revalidate = 0
 export default async function page ()  {
 

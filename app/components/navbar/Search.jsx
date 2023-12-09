@@ -56,13 +56,11 @@ export default function Search() {
         <div className="hidden sm:block border-x-[1px]">
            {durationLabel}
         </div>
-        <div className="flex items-center gap-3">
-           <div className="hidden sm:block text-gray-400">
+        <div className="hidden sm:block text-gray-400">
            {guestLabel}
-           </div>
-           <div className="p-2 bg-rose-500 rounded-full text-white">
+        </div>
+        <div className="p-2 bg-rose-500 rounded-full text-white">
            <MagnifyingGlassIcon width={18}/>
-           </div>
         </div>
     </div>
   )

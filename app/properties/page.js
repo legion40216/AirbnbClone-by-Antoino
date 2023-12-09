@@ -3,6 +3,7 @@ import PropertiesClient from "./PropertiesClient"
 
 import getCurrentUser from "../actions/getCurrentUser"
 import getListings from "../actions/getListings"
+
 export const revalidate = 0
 export default async function page() {
   const currentUser = await getCurrentUser()

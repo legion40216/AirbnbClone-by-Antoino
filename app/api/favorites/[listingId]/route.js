@@ -2,11 +2,10 @@ import { NextResponse } from "next/server";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/libs/prismadb";
 
-export async function POST(request, {params}) {
+export async function POST({params}) {
 
 const currentUser = await getCurrentUser()
 
-console.log(currentUser)
  if(!currentUser) {
     return NextResponse.error()
  }
@@ -33,10 +32,7 @@ console.log(currentUser)
  return NextResponse.json(user);
 }
 
-export async function DELETE(
-    request,
-    {params}
-  ) {
+export async function DELETE({params}) {
     const currentUser = await getCurrentUser()
   
     if (!currentUser) {

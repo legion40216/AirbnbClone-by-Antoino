@@ -9,8 +9,7 @@ import RegisterModal from './components/Modals/RegisterModal'
 import LoginModal from './components/Modals/LoginModal'
 import RentModal from './components/Modals/RentModal'
 import SearchModal from './components/Modals/SearchModal'
-import { Suspense } from 'react'
-
+export const revalidate = 0
 const nunito = Nunito({ subsets: ['latin'] })
 
 export const metadata = {
@@ -23,13 +22,13 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={nunito.className}>
-      <Toaster/>
-      <RegisterModal/>
-      <RentModal/>
-      <LoginModal/>
-      <SearchModal/>
-      <Navbar currentUser={currentUser}/>
-      {children}
+        <Toaster/>
+        <RegisterModal/>
+        <RentModal/>
+        <LoginModal/>
+        <SearchModal/>
+        <Navbar currentUser={currentUser}/>
+        {children}
 
       </body>
     </html>

@@ -2,11 +2,12 @@
 import { useCallback, useState } from 'react'
 import useModalStore from '@/hooks/useModalStore'
 import { Bars4Icon } from '@heroicons/react/24/outline'
-import { signOut } from 'next-auth/react'
+
 
 import Menuitem from './MenuItem'
 import Avatar from '../Avatar'
 import { useRouter } from 'next/navigation'
+import { signOut } from 'next-auth/react'
 
 export default function UserMenu ({currentUser}) {
   
@@ -20,24 +21,25 @@ export default function UserMenu ({currentUser}) {
     }
     modalSwitcher.toggle('rent')
   },[modalSwitcher,currentUser])
+
   return (
     <div className="relative">
       <div className="flex items-center gap-3">
 
         <button onClick={onRent}
-        className = "hidden md:block hover:bg-neutral-100 transition border-[1px]"
-        data-type = "nav-button">
-        Airbnb your home
+          className = "hidden md:block hover:bg-neutral-100 transition border-[1px]"
+          data-type = "nav-button">
+          Airbnb your home
         </button>
 
         <div className='flex gap-3 items-center'>
-        <button className="hamburger-menu" onClick={()=>{setIsOpen(!isOpen)}}>
-        <Bars4Icon  width={18}/>
-        </button>
+          <button className="hamburger-menu" onClick={()=>{setIsOpen(!isOpen)}}>
+          <Bars4Icon  width={18}/>
+          </button>
 
-        <div className='hidden md:block'>
-        <Avatar/>
-        </div>
+          <div className='hidden md:block'>
+          <Avatar/>
+          </div>
         </div>
       </div>
       {isOpen && (
@@ -46,8 +48,7 @@ export default function UserMenu ({currentUser}) {
           { currentUser ? (
           <>
             <Menuitem
-            onClick={()=>
-              {
+            onClick={()=> {
                 router.push('/trips')
                 setIsOpen(!isOpen)
               }}
@@ -55,8 +56,7 @@ export default function UserMenu ({currentUser}) {
            /> 
 
           <Menuitem
-            onClick={()=>
-            {
+            onClick={()=> {
               router.push('/favorites')
               setIsOpen(!isOpen)
             }}
@@ -64,8 +64,7 @@ export default function UserMenu ({currentUser}) {
            />
 
             <Menuitem
-            onClick={()=>
-            {
+            onClick={()=> {
               router.push('/reservations')
               setIsOpen(!isOpen)
             }}
@@ -73,8 +72,7 @@ export default function UserMenu ({currentUser}) {
            />
 
            <Menuitem
-            onClick={()=>
-            {
+            onClick={()=> {
               router.push('/properties')
               setIsOpen(!isOpen)
             }}
@@ -82,8 +80,7 @@ export default function UserMenu ({currentUser}) {
            />
 
            <Menuitem
-            onClick={()=>
-            {
+            onClick={()=> {
               modalSwitcher.toggle('rent')
               setIsOpen(!isOpen)
             }}
@@ -91,8 +88,7 @@ export default function UserMenu ({currentUser}) {
            />
 
            <Menuitem
-            onClick={()=>
-            {
+            onClick={()=> {
               signOut()
               setIsOpen(!isOpen)
             }}
@@ -102,16 +98,14 @@ export default function UserMenu ({currentUser}) {
           ) : (
           <>
            <Menuitem
-            onClick={()=>
-              {
+            onClick={()=> {
                 modalSwitcher.toggle('login') 
                 setIsOpen(!isOpen)
               }}
             label= "Login"
            /> 
             <Menuitem
-            onClick={()=>
-            {
+            onClick={()=> {
               modalSwitcher.toggle('register') 
               setIsOpen(!isOpen)
             }}
