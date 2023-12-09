@@ -16,7 +16,6 @@ const authOptions = {
       },
 
       async authorize(credentials) {
-        console.log('Authorize function called with credentials:', credentials);
         if (!credentials?.email || !credentials?.password) {
           throw new Error('Invalid credentials');
         }
@@ -26,7 +25,7 @@ const authOptions = {
             email: credentials.email,
           },
         });
-        console.log('User found:', user);
+
         if (!user || !user?.hashedPassword) {
           throw new Error('Invalid credentials');
         }
@@ -35,7 +34,7 @@ const authOptions = {
           credentials.password,
           user.hashedPassword
         );
-        console.log('is corret password');
+
         if (!isCorrectPassword) {
           throw new Error('Invalid credentials');
         }

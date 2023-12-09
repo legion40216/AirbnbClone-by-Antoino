@@ -5,13 +5,11 @@ import { Toaster } from 'react-hot-toast'
 import getCurrentUser from './actions/getCurrentUser'
 
 import Navbar from './components/navbar/Navbar'
-
 import RegisterModal from './components/Modals/RegisterModal'
 import LoginModal from './components/Modals/LoginModal'
 import RentModal from './components/Modals/RentModal'
 import SearchModal from './components/Modals/SearchModal'
-import ClientOnly from './components/ClientOnly'
-
+import { Suspense } from 'react'
 
 const nunito = Nunito({ subsets: ['latin'] })
 
@@ -25,15 +23,12 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={nunito.className}>
-      <ClientOnly>
       <Toaster/>
       <RegisterModal/>
       <RentModal/>
       <LoginModal/>
       <SearchModal/>
       <Navbar currentUser={currentUser}/>
-      </ClientOnly>
-
       {children}
 
       </body>

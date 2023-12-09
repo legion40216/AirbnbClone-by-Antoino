@@ -3,7 +3,7 @@ import getFavoritesListing from '../actions/getFavoritesListing'
 
 import EmptyState from '@/app/components/EmptyState'
 import FavoriteClient from './FavoriteClient'
-
+export const revalidate = 0
 export default async function page () {
     const listings =  await getFavoritesListing()
     const currentUser = await getCurrentUser()

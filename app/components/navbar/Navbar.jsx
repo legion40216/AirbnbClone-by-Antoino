@@ -1,4 +1,3 @@
-"use client"
 import Categories from "./Categories";
 import Logo from "./Logo";
 import Search from "./Search";
@@ -14,6 +13,7 @@ export default function Navbar({
      <Logo/>
      <Search/>
      <UserMenu currentUser={currentUser}/>
+     
   </div>
   <Categories/>
   </header>

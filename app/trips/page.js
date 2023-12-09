@@ -4,7 +4,7 @@ import getReservations from '../actions/getReservation'
 
 import EmptyState from '../components/EmptyState'
 import TripsClient from './TripsClient'
-
+export const revalidate = 0
 export default async function page ()  {
   const currentUser = await getCurrentUser()
   if(!currentUser) {

@@ -4,7 +4,7 @@ import getReservations from '@/app/actions/getReservation'
 
 import EmptyState from '@/app/components/EmptyState'
 import ListingClient from '@/app/listings/[listingId]/ListingClient'
-
+export const revalidate = 0
 export default async function page({params}) {
   const listing = await getListingById({params})
   const reservations = await getReservations({params})

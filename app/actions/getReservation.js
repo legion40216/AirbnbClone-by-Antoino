@@ -1,5 +1,4 @@
 import prisma from '@/libs/prismadb'
-import { revalidatePath } from 'next/cache';
 
 export default async function getReservations({params}) {
 
@@ -35,7 +34,5 @@ export default async function getReservations({params}) {
 
   } catch (error) {
     throw new Error(error);
-  } finally {
-    revalidatePath("/") 
-  }
+  } 
 }
