@@ -10,8 +10,7 @@ export default async function page({params}) {
   const listing = await getListingById({params})
   const reservations = await getReservations({params})
   const currentUser = await getCurrentUser()
-
-
+  
   if(!listing || listing.length === 0 )
   {
     return (

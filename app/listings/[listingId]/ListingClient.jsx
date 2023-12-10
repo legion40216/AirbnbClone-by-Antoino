@@ -2,7 +2,7 @@
 
 import ListingReservation from '@/app/components/listings/ListingReservation'
 import ListingInfo from '@/app/components/listings/ListingInfo'
-import { categories } from '@/app/components/navbar/Categories'
+import { categories } from '@/app/constants/categoryIcons'
 
 import useModalStore from '@/hooks/useModalStore'
 import { toast } from "react-hot-toast";

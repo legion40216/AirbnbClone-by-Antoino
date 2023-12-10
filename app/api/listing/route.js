@@ -4,8 +4,7 @@ import getCurrentUser from '@/app/actions/getCurrentUser'
 
 export async function POST(request) {
     const currentUser = await getCurrentUser()
-    if(!currentUser)
-    {
+    if(!currentUser) {
         return NextResponse.error()
     }
     const body = await request.json()
@@ -20,7 +19,7 @@ export async function POST(request) {
         title,
         description,
     } = body
-    console.log(description)
+  
     const listing = await prisma.listing.create({
         data:{
             title, 

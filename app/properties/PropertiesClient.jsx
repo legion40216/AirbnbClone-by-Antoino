@@ -7,8 +7,6 @@ import { useRouter } from 'next/navigation';
 import React, { useCallback, useState } from 'react'
 import { toast } from "react-hot-toast";
 
-
-
 export default function PropertiesClient({
   currentUser,
   listings

@@ -3,24 +3,23 @@ import { useCallback, useState } from 'react'
 import useModalStore from '@/hooks/useModalStore'
 import { Bars4Icon } from '@heroicons/react/24/outline'
 
-
 import Menuitem from './MenuItem'
 import Avatar from '../Avatar'
 import { useRouter } from 'next/navigation'
 import { signOut } from 'next-auth/react'
 
-export default function UserMenu ({currentUser}) {
+export default function UserMenu ({status}) {
   
   const router = useRouter()
   const modalSwitcher = useModalStore()
   const [isOpen, setIsOpen] = useState(false)
   
   const onRent = useCallback(()=>{
-    if(!currentUser){
+    if(status === "unauthenticated"){
       return modalSwitcher.toggle('login') 
     }
     modalSwitcher.toggle('rent')
-  },[modalSwitcher,currentUser])
+  },[modalSwitcher,status])
 
   return (
     <div className="relative">
@@ -45,7 +44,7 @@ export default function UserMenu ({currentUser}) {
       {isOpen && (
         <nav className='nav-menu'>
           <ul className='flex flex-col'>
-          { currentUser ? (
+          { !(status === "unauthenticated") ? (
           <>
             <Menuitem
             onClick={()=> {

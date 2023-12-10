@@ -11,10 +11,10 @@ import ImageUpload from "./inputs/ImageUpload";
 import Inputs from "./inputs/Input";
 
 import { useForm } from "react-hook-form";
-import { categories } from "../navbar/Categories";
 import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { categories } from "@/app/constants/categoryIcons";
 
 
 const STEPS = Object.freeze({
