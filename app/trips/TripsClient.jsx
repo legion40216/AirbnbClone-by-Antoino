@@ -3,18 +3,14 @@ import React, { useCallback, useState } from 'react';
 import Heading from '../components/Heading';
 import ListingCard from '../components/listings/ListingCard';
 import { toast } from "react-hot-toast";
+import { useRouter } from 'next/navigation';
 
 export default function TripsClient({
     reservations,
     currentUser
 }) {
+    const router = useRouter()
     const [deletingId, setDeletingId] = useState('');
-    const [reservationState, setReservationState] = useState(reservations);
-
-    const updateReservations = (deletedReservationId) => {
-        const newReservations = reservationState.filter((item) => item.id !== deletedReservationId);
-        setReservationState(newReservations);
-    };
 
     const onCancel = useCallback(async (id) => {
         setDeletingId(id);
@@ -23,7 +19,8 @@ export default function TripsClient({
                 method: 'DELETE'
             });
             if (response.ok) {
-                updateReservations(id);
+                router.refresh()
+
                 toast.success('Reservation cancelled');
             }
         } catch (error) {
@@ -31,7 +28,7 @@ export default function TripsClient({
         } finally {
             setDeletingId('');
         }
-    }, []);
+    }, [router]);
 
     return (
         <div className='grid-flow'>
@@ -40,7 +37,7 @@ export default function TripsClient({
                 subtitle="Where you've been and where you are going"
             />
             <div className='multiple-grid gap-4'>
-                {reservationState.map((reservation) => (
+                {reservations.map((reservation) => (
                     <ListingCard
                         key={reservation.id}
                         data={reservation.listing}
